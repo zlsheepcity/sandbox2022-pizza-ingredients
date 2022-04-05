@@ -1,35 +1,31 @@
-export const Ingredients = [
-    { price: 0.5, id: 'tomato' },
-    { price: 0.5, id: 'sliced mushrooms' },
-    { price: 1.0, id: 'feta cheese' },
-    { price: 1.0, id: 'sausages' },
-    { price: 0.5, id: 'sliced onion' },
-    { price: 0.3, id: 'mozzarella cheese' },
-    { price: 2.0, id: 'oregano' },
-    { price: 1.0, id: 'bacon' },
-];
+import { DataAPI_PlainJS } from "./32--DataAPI_PlainJS.js";
 
-export const Pizzas = [
-    {
-        id: 'MacDac Pizza',
-        ingredients: [
-            'tomato',
-            'sliced mushrooms',
-            'feta cheese',
-            'sausages',
-            'sliced onion',
-            'mozzarella cheese',
-            'oregano',
-        ],
+export const DataAPI_Template = {
+    pizzas: {
+        create: pizza => true,
+        read:   pizza => ({}),
+        delete: pizza => true,
+        update: pizza => true,
+        readAll:   () => [{}],
     },
-    {
-        id: 'Lovely Mushroom Pizza',
-        ingredients: [
-            'sliced mushrooms',
-            'tomato',
-            'bacon',
-            'mozzarella cheese',
-            'oregano',
-        ],
+    ingredients: {
+        create: ingredient => true,
+        read:   ingredient => ({}),
+        update: ingredient => true,
+        delete: ingredient => true,
+        readAll:        () => [{}],
     },
-];
+}
+
+export const DataMaster =
+function DataMasterFactory() {
+
+    this.api = {
+     ...DataAPI_Template,
+//   ...DataAPI_PlainJS,
+     ...DataAPI_PlainJS,
+    };
+
+};
+
+export const DM = new DataMaster();

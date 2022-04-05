@@ -1,0 +1,203 @@
+<h1>tests</h1>
+<p>console.log output</p>
+
+<style>
+   [display-source] {
+        display:     block;
+        font-family: monospace;
+        white-space: pre-wrap;
+        padding:     0 1rem 2rem 1rem;
+    }
+</style>
+
+<script>
+    const log = console.log;
+    const logGroupStart = console.group;
+    const logGroupEnd = console.groupEnd;
+    log('hi, tests');
+</script>
+
+<h2>PizzaFactory test</h2>
+<script type="module" display-source>
+
+    import {
+        Pizza,
+    } from "./10--PizzaMaster.js";
+    const pizza = new Pizza({id:'PizzaFactory Test'});
+
+    logGroupStart('PizzaFactory');
+    log(
+       "pizza",
+        pizza,
+        );
+    log(
+       "pizza.getDescription()",
+        pizza.getDescription(),
+        );
+    logGroupEnd();
+
+</script>
+
+<h2>ListMaster test</h2>
+<script type="module" display-source>
+
+    import {
+        UniqueList,
+    } from "./20--ListMaster.js";
+    const List = new UniqueList();
+
+    List.list = ['a', 'b', 'c'];
+
+    logGroupStart('ListMaster');
+    log(
+       "List.data() initial list",
+        List.data(),
+        );
+    log(
+       "List.push('new item')",
+        List.push('new item'),
+        );
+    log(
+       "List.push('new item') avoid dublicate",
+        List.push('new item'),
+        );
+    log(
+       "List.push('third', 3)",
+        List.push('third', 3),
+        );
+    log(
+       "List.move('new item', 2)",
+        List.move('new item', 2),
+        );
+    log(
+       "List.move('not exist', 2)",
+        List.move('not exist', 2),
+        );
+    log(
+       "List.move('third', 0) to delete",
+        List.move('third', 0),
+        );
+    logGroupEnd();
+
+</script>
+
+<h2>DataMaster test 2</h2>
+<script type="module" display-source>
+
+    import {
+        Ingredients,
+        Pizzas,
+    } from "./31--DataMock.js";
+
+    logGroupStart('Mockup data');
+    log('Pizzas',      [...Pizzas]);
+    log('Ingredients', [...Ingredients]);
+    logGroupEnd();
+
+    import {
+        DataMaster,
+    } from "./30--DataMaster.js";
+    const DM = new DataMaster();
+    const DataApiTestRun = async () => {
+        logGroupStart('Data API');
+        log(
+           'Read pizza by id',
+            await DM.api.pizzas.read({id:'Lovely Mushroom Pizza'}),
+            );
+        log(
+           'Read pizza by wrong id',
+            await DM.api.pizzas.read({id:'not exist'}),
+            );
+        log(
+           'Delete pizza by id',
+            await DM.api.pizzas.delete({id:'Lovely Mushroom Pizza'}),
+            await DM.api.pizzas.read({id:'Lovely Mushroom Pizza'}),
+            );
+        log(
+           'Create new pizza',
+            await DM.api.pizzas.create({id:'new pizza'}),
+            await DM.api.pizzas.read({id:'new pizza'}),
+            );
+        log(
+           'Update new pizza',
+            await DM.api.pizzas.update({id:'new pizza', ingredients:['oregano']}),
+            await DM.api.pizzas.read({id:'new pizza'}),
+            );
+        log(
+           'Read all pizzas',
+            await DM.api.pizzas.readAll(),
+            );
+        log(
+           'Read all ingredients',
+            await DM.api.ingredients.readAll(),
+            );
+        log(
+           'Read ingredient',
+            await DM.api.ingredients.read({id:'oregano'})
+            );
+        logGroupEnd();
+    };
+    DataApiTestRun();
+
+</script>
+
+<h2>AppController test</h2>
+<script type="module" display-source>
+
+    import API from "./index.js";
+    const TestPizza = { id:'Test Pizza' };
+
+    const AppControllerTestRun = async () => {
+
+        logGroupStart('App Controller');
+        log(
+           "await API.PizzaReadAll()",
+        [...await API.PizzaReadAll()],
+            );
+        log(
+           "await API.PizzaRead({id:'MacDac Pizza'})",
+            await API.PizzaRead({id:'MacDac Pizza'}),
+            );
+        log(
+           "await API.PizzaCreate(TestPizza)",
+            await API.PizzaCreate(TestPizza),
+            await API.PizzaRead(TestPizza),
+            );
+        log(
+           "await API.PizzaUpdate({...TestPizza, ingredients:['oregano']})",
+            await API.PizzaUpdate({...TestPizza, ingredients:['oregano']}),
+            await API.PizzaRead(TestPizza),
+            );
+        log(
+           "await API.PizzaAddIngredient(TestPizza, 'tomato')",
+            await API.PizzaAddIngredient(TestPizza, 'tomato'),
+            await API.PizzaRead(TestPizza),
+            );
+        log(
+           "await API.PizzaReadIngredients(TestPizza)",
+            await API.PizzaReadIngredients(TestPizza),
+            );
+        log(
+           "await API.PizzaReadSellingPrice(TestPizza)",
+            await API.PizzaReadSellingPrice(TestPizza),
+            );
+        log(
+           "await API.PizzaFullProfile(TestPizza)",
+            await API.PizzaFullProfile(TestPizza),
+            );
+        log(
+           "await API.PizzaFullProfile({id:'MacDac Pizza'})",
+            await API.PizzaFullProfile({id:'MacDac Pizza'}),
+            );
+        log(
+           "await API.PizzaDelete(TestPizza)",
+        [...await API.PizzaReadAll()],
+            await API.PizzaDelete(TestPizza),
+        [...await API.PizzaReadAll()],
+            );
+        logGroupEnd();
+
+    };
+    AppControllerTestRun();
+
+</script>
