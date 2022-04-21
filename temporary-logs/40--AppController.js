@@ -15,6 +15,7 @@ export const PizzaCreate = async function (pizza) {
     const data = await DM.api.pizzas.create(pizza);
     return data;
 };
+
 export const PizzaRead = async function (pizza) {
     const data = await DM.api.pizzas.read(pizza);
     return data;
@@ -54,7 +55,9 @@ export const PizzaReorderIngredient = async function (pizza, ingredient, layer) 
 export const PizzaReadIngredients = async function (pizza) {
     const CurrentPizza = await DM.api.pizzas.read(pizza);
     const data = [];
-    const dataUpdate = async id => { await data.push(DM.api.ingredients.read({id})); };
+    const dataUpdate = async id => {
+        await data.push(DM.api.ingredients.read({id}));
+    };
     CurrentPizza.ingredients.map(dataUpdate);
     return data;
 };
