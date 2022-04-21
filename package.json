@@ -1,0 +1,12 @@
+{
+    "name": "sandbox2022-pizza-ingredients",
+    "version": "1.0.0",
+    "description": "Sample project with MongoDB and Express.js web REST API",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/zlsheepcity/sandbox2022-pizza-ingredients.git"
+    },
+    "author": "zl",
+    "license": "any",
+    "homepage": "https://github.com/zlsheepcity/sandbox2022-pizza-ingredients"
+}

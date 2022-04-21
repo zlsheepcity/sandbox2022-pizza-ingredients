@@ -1,7 +1,24 @@
 # sandbox2022-pizza-ingredients
-Sandbox2022 Pizza Ingredients
+Test project with express.js and MongoDB.  
+Read the «Project Task» section for project goals.  
 
-# Task:
+# Project Description
+
+## `./server/`
+The common code for working with the express.js/MongoDB.
+
+### Routes in `./server/routes`
+- GET /ingredients
+- GET /pizzas
+- GET /pizza
+- POST /pizza/addIngredient
+- POST /pizza/removeIngredient
+- POST /pizza/reorderIngredient
+
+## `./logic/`
+The main business logic for this task.
+
+# Project Task
 
 The application will allow the users to manage a small catalog of pizzas and the ingredients needed to bake them. 
 In particular, users must be able to add and remove the ingredients of an existing pizza (and if possible give those ingredients an order of appearance).
