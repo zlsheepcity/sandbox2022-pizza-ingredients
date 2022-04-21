@@ -4,10 +4,16 @@ Read the «Project Task» section for project goals.
 
 # Project Description
 
-## `./server/`
+I used test account on MongoDB cloud as database.  
+express.js as server.  
+and some javascript for business logic.  
+
+## Folders
+
+### `./server/`
 The common code for working with the express.js/MongoDB.
 
-### Routes in `./server/routes`
+#### Routes in `./server/routes`
 - GET /ingredients
 - GET /pizzas
 - GET /pizza
@@ -15,8 +21,11 @@ The common code for working with the express.js/MongoDB.
 - POST /pizza/removeIngredient
 - POST /pizza/reorderIngredient
 
-## `./logic/`
+### `./logic/`
 The main business logic for this task.
+
+### `./temporary-logs`
+Ignore it. Just dont want to delete these files.
 
 # Project Task
 
