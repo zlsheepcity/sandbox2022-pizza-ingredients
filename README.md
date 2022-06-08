@@ -1,31 +1,17 @@
 # sandbox2022-pizza-ingredients
 Test project with express.js and MongoDB.  
-Read the «Project Task» section for project goals.  
 
-# Project Description
+### `cd server`
+```
+npm install
+npm start
 
-I used test account on MongoDB cloud as database.  
-express.js as server.  
-and some javascript for business logic.  
+    [nodemon] starting `node server.js`
+    Mongo cloud connected
+    Server is running on port: 5000
 
-## Folders
-
-### `./server/`
-The common code for working with the express.js/MongoDB.
-
-#### Routes in `./server/routes`
-- GET /ingredients
-- GET /pizzas
-- GET /pizza
-- POST /pizza/addIngredient
-- POST /pizza/removeIngredient
-- POST /pizza/reorderIngredient
-
-### `./logic/`
-The main business logic for this task.
-
-### `./temporary-logs`
-Ignore it. Just dont want to delete these files.
+http://localhost:5000/
+```
 
 # Project Task
 

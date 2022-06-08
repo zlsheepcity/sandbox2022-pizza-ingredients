@@ -1,6 +1,6 @@
 // Supported operations
 
-const utils = require("utils");
+const utils = require("./utils");
 
 module.exports = {
 
@@ -25,6 +25,8 @@ module.exports = {
         return {
             documentId: pizzaId,
             collection: 'Pizzas',
+            subCollection: 'Ingredients',
+            getPrice: function (ingredients) {},
             errorMsg: `Error fetching pizza with id:${pizzaId}`,
         };
     },

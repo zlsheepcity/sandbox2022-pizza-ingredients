@@ -13,12 +13,12 @@ module.exports = {
   connectToServer: function (callback) {
     client.connect(function (err, db) {
       if (err || !db) {
-        console.log("Mongo cloud error");
+        console.log("DB-- Mongo cloud error");
         return callback(err);
       }
 
       dbConnection = db.db(DBName);
-      console.log("Mongo cloud connected");
+      console.log("DB-- Mongo cloud connected");
 
       return callback();
     });

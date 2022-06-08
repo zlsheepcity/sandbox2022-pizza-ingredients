@@ -4,7 +4,7 @@ module.exports = {
     // top position is 1
     // to delete an item set position=0
 
-    updateList = (list, item, position = 1) => {
+    updateList: (list, item, position = 1) => {
         const index = list.indexOf(item);
         const exist = index > -1;
         const keep  = position > 0;
